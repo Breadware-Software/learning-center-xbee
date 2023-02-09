@@ -1,5 +1,5 @@
 '''
-Copyright (c) 2021, Medium One, Inc.
+Copyright (c) 2023, Breadware LLC
 
 Project: Remote Monitoring
 Date Modified: March 2 2021
@@ -9,7 +9,7 @@ Description: Proof-of-concept for a device that leverages
 5G cellular technology to monitor and report the temperature,
 humidity, and location (lat/lon) analog and digital inputs
 
-Sensor and GPS Code Contributed by: Mouser, Digi, Medium One, Green Shoe Garage
+Sensor and GPS Code Contributed by: Mouser, Digi, Breadware, Green Shoe Garage
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -79,7 +79,7 @@ WAIT_REBOOT = 10                                # Pending Reboot state
 
 # init vars
 api_user, api_password = '',''                  # basic api user credentials
-event_data = ""                                 # payload to M1
+event_data = ""                                 # payload to console
 heartbeat_time = 0                              # next time HB to be sent init 0
 datatransmit_time = 0                           # next time to transmit data
 state = INIT_CELLULAR
@@ -98,7 +98,7 @@ di1_last = None
 do0_last = None
 di2_last = None
 
-# map m1 tags to pins, used to process controls from cloud
+# map tags to pins, used to process controls from cloud
 tag_to_pin = {"di0": di0, "di1": di1, "do0": do0, "di2": di2}
 
 # set watchdog for 2 mins
@@ -180,7 +180,7 @@ def load_registration(env):
 
 def register_device():
     '''
-    Register device on Medium One
+    Register device on Console
     :return:
     '''
     global api_user, api_password,imei_number, reg_mqtt, state, stopwatch
@@ -334,10 +334,10 @@ def process_data():
         stdout.buffer.write('{"r":3}')          # establishing cellular connection
 
     elif state == WAIT_RETRY_REGISTRATION or state == AUTHENTICATING or state == WAIT_REGISTRATION:
-        stdout.buffer.write('{"r":4}')          # busy authenticating to Medium One
+        stdout.buffer.write('{"r":4}')          # busy authenticating to console
 
     elif state == FAILED_REGISTRATION:
-        stdout.buffer.write('{"r":5}')          # Unable to register device on Medium One
+        stdout.buffer.write('{"r":5}')          # Unable to register device on console
 
     event_data = ""
 
