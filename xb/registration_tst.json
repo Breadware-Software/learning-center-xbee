@@ -3,6 +3,6 @@
   "api_key": "",
   "reg_mqtt_id": "",
   "reg_password": "",
-  "host": "mqtt.mediumone.com",
-  "port": 61618
+  "host": "mqtt.breadware.com",
+  "port": 41618
 }
