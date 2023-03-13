@@ -36,7 +36,7 @@ import os
 import socket, network, xbee
 import ustruct as struct
 from machine import unique_id, Pin
-from m1mqtt import MQTTClient, MQTTNetworkError, MQTTBadUsernameOrPassword
+from bwmqtt import MQTTClient, MQTTNetworkError, MQTTBadUsernameOrPassword
 from sys import stdin, stdout
 from machine import UART
 from machine import I2C
